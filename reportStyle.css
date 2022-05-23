@@ -1,0 +1,10 @@
+form{
+    text-align: center;
+}
+.nonDescription{
+    width: 485px;
+}
+#description{
+    width: 500px;
+    height: 100px;
+}

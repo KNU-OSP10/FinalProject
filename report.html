@@ -5,36 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>얼마약?!</title>
-    <style>
-        .nonDescription{
-            width: 485px;
-        }
-        #description{
-            width: 500px;
-            height: 100px;
-        }
-    </style>
+    <link href="reportStyle.css" rel="stylesheet" >
+    <script src="report.js"></script>
 </head>
 <body>
     <!-- 위에 배너 만들기. 배너는 계속 쓸 수 있게 하기.-->
     <!-- 검색 창 포함해서 만들기(배너)-->
-    <form></form>
-    약국명 <input type="text" class="nonDescription"><br>
-    약이름 <input type="text" class="nonDescription"><br>
-    약가격 <input type="number" class="nonDescription"><br><br>
-    내용 <input type="text" id="description"><br><br>
+    <form>
+        약국명 <input type="text" class="nonDescription" name="pharmName" /required>
+        <!-- 팝업 버튼 구현 필요함. -->
+        약이름 <input type="text" class="nonDescription" name="drugName" /required><br>
+        <!-- 마찬가지. 팝업 버튼구현 필요함. -->
+        약가격 <input type="number" class="nonDescription" name="price" /required><br><br>
+        내용 <input type="text" id="description" name="description" /required><br><br>
 
     <!-- 약국명 (with 조회)-->
     <!-- 약 이름 (with 조회)-->
     <!-- 약 가격(입력하고 집어넣기)-->
     <!-- 내용(입력박스로 만들고 집어넣기)-->
 
-    첨부파일 <input type="file" id = "imageFile" >
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        첨부파일 <input type="file" id = "imageFile" name="fileUpload" /required>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <!-- 첨부사진 집어넣기(파일선택 태그 넣고, 파일 선택할수 있게끔) -->
-    <input type="submit" value="전송">
+        <input type="submit" value="전송">
     <!-- 제출 버튼 누르면 제출될 수 있게끔 하기-->
+
+    </form>
+    
 
 </body>
 </html>
