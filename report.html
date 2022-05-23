@@ -11,8 +11,8 @@
 <body>
     <!-- 위에 배너 만들기. 배너는 계속 쓸 수 있게 하기.-->
     <!-- 검색 창 포함해서 만들기(배너)-->
-    <form>
-        약국명 <input type="text" class="nonDescription" name="pharmName" /required>
+    <form name="input" method="get" action=""> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
+        약국명 <input type="text" class="nonDescription" name="pharmName" /required><br>
         <!-- 팝업 버튼 구현 필요함. -->
         약이름 <input type="text" class="nonDescription" name="drugName" /required><br>
         <!-- 마찬가지. 팝업 버튼구현 필요함. -->
@@ -30,7 +30,7 @@
     <!-- 첨부사진 집어넣기(파일선택 태그 넣고, 파일 선택할수 있게끔) -->
         <input type="submit" value="전송">
     <!-- 제출 버튼 누르면 제출될 수 있게끔 하기-->
-
+        
     </form>
     
 
