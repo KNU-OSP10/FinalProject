@@ -5,8 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>얼마약?!</title>
-    <link href="css/reportStyle.css" rel="stylesheet" >
-    <script src="javascript/report.js"></script>
+    <style>
+        form{
+            text-align: center;
+        }
+        .nonDescription{
+            width: 485px;
+        }
+        #description{
+            width: 500px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
     <!-- 위에 배너 만들기. 배너는 계속 쓸 수 있게 하기.-->
@@ -18,7 +28,7 @@
         <!-- 팝업 버튼 구현 필요함. -->
         약이름 <input type="text" class="nonDescription" name="drugName" /required>
         <input type="button" value="조회" onclick="inquireDrugName();"><br>
-        
+
         <!-- 마찬가지. 팝업 버튼구현 필요함. -->
         약가격 <input type="number" class="nonDescription" name="price" /required><br><br>
         내용 <input type="text" id="description" name="description" /required><br><br>
@@ -34,9 +44,15 @@
     <!-- 첨부사진 집어넣기(파일선택 태그 넣고, 파일 선택할수 있게끔) -->
         <input type="submit" value="전송">
     <!-- 제출 버튼 누르면 제출될 수 있게끔 하기-->
-        
     </form>
-    
-
+    <script>
+        function inquirePharmName(){
+            window.open("html/testPopup.html","팝업 테스트","width=400,height=300,top=10,left=10");
+        }
+        
+        function inquireDrugName(){
+            window.open("html/testPopup.html","팝업 테스트","width=400,height=300,top=10,left=10");
+        }
+    </script>
 </body>
 </html>
