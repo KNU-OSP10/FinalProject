@@ -8,5 +8,15 @@
 </head>
 <body>
     <h1>팝업창</h1>
+    <input type="text" id ="popUpInput">
+    <button id="popUpSubmit">
+        제출
+    </button>
+    <script>
+        document.getElementById("popUpSubmit").addEventListener("click", () =>{
+            opener.document.getElementById("pharmName").innerText = document.getElementById("popUpInput").value;
+            window.close();
+        })
+    </script>    
 </body>
 </html>
