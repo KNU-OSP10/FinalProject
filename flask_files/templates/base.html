@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약 검색</title>
+    <style>
+       
+        header{
+            text-align: center;
+
+        }
+        header h1 span{
+            color:red;
+        }
+        
+        header nav ul li {
+            display: inline;
+            margin:0 10px;
+        }
+       
+       
+    </style>
+</head>
+<body>
+    <header>
+        <h1>얼마<span>약</span></h1>
+        <div class="search">
+        <input type="text">
+        <button type="button"></button>
+        </div>
+        <nav>
+            <ul>
+                <li>약 랭킹</li>
+                <li>가까운 약국</li>
+                <li>약 제보</li>
+                <li>About us</li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <div class="content">
+       {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
