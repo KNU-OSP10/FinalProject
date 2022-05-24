@@ -14,7 +14,7 @@
     </button>
     <script>
         document.getElementById("popUpSubmit").addEventListener("click", () =>{
-            opener.document.getElementById("pharmName").innerText = document.getElementById("popUpInput").value;
+            opener.document.getElementById("pharmName").value = document.getElementById("popUpInput").value;
             window.close();
         })
     </script>    
