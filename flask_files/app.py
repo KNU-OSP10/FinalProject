@@ -7,13 +7,13 @@ def index():
     return render_template('base.html')
 
 @app.route('/pharmacy_map')
-def write():
+def map():
     return render_template('pharmacy_map.html')
 
 @app.route('/report')
-def write():
+def remote():
     return render_template('report.html')
 
 @app.route('/about_us')
-def write():
+def about_us():
     return render_template('about_us.html')
