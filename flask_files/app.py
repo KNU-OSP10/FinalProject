@@ -17,6 +17,14 @@ def write():
 def report():
     return render_template('report.html')
 
+@app.route('/drugFind')
+def drugFind():
+    return render_template('testDrug.html')
+
+@app.route('/pharmFind')
+def pharmFind():
+    return render_template('testPharm.html')
+
 @app.route('/reporting', methods = ['GET'])
 def reporting():
     con = psycopg2.connect(
