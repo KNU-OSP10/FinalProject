@@ -31,7 +31,8 @@ def reporting():
         host = "20.84.55.133",
         database = 'seunghwan',
         user = "seunghwan",
-        password = "seunghwan"
+        password = "seunghwan",
+        port = 8081
     )
     cur = con.cursor()
     
