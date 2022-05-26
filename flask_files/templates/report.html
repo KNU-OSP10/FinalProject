@@ -49,12 +49,12 @@
     <hr>
 
     <br><br><br><br>
-    <form name="input" method="get" action="app.py"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
+    <form name="input" method="get" action="http://20.84.55.133:5000/reporting"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
         약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" disabled /required >
         <input type="button" value="조회" onclick="inquirePharmName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
 
         
-        약이름 <input type="text" class="nonDescription" name="drugName" disabled /required> 
+        약이름 <input type="text" class="nonDescription" id = "drugName" name="drugName" disabled /required> 
         <input type="button" value="조회" onclick="inquireDrugName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
 
         
@@ -76,7 +76,7 @@
         }
         
         function inquireDrugName(){
-            window.open("testPopup.html","약 테스트","width=400,height=300,top=10,left=10");
+            window.open("testDrug.html","약 테스트","width=400,height=300,top=10,left=10");
         }
     </script>
 </body>

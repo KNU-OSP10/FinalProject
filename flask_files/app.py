@@ -38,4 +38,3 @@ def reporting():
     con.commit()
     cur.close()
     con.close()
-    
