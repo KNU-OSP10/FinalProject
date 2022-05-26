@@ -28,10 +28,10 @@ def pharmFind():
 @app.route('/reporting', methods = ['GET'])
 def reporting():
     con = psycopg2.connect(
-        host = "localhost",
-        database = 'reportDB',
-        user = "postgres",
-        password = "2896"
+        host = "20.84.55.133",
+        database = 'seunghwan',
+        user = "seunghwan",
+        password = "seunghwan"
     )
     cur = con.cursor()
     
@@ -40,7 +40,7 @@ def reporting():
     price = request.form('price')
     description = request.form('description')
     
-    query = "insert into public.reportDB(drug,pharmacy,price,description) value({0},{1},{2},{3})".format(drug,pharmacy,price,description)
+    query = "insert into pharmacy_schema.report(drug,pharmacy,price,description) value({0},{1},{2},{3})".format(drug,pharmacy,price,description)
     cur.execute(query)
     
     con.commit()
