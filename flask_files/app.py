@@ -3,7 +3,6 @@ from multiprocessing.sharedctypes import Value
 from flask import Flask, render_template, request
 import psycopg2
 
-        
 app = Flask(__name__)
 @app.route('/')
 def index():
@@ -47,3 +46,4 @@ def reporting():
     con.commit()
     cur.close()
     con.close()
+    return render_template('successInput.html')
