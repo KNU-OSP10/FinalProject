@@ -13,12 +13,10 @@
         header h1 span{
             color:red;
         }
-        
         header nav ul li {
             display: inline;
             margin:0 10px;
         }
-
         form{
             text-align: center;
         }
@@ -50,23 +48,24 @@
     </header>
     <hr>
     <!-- 검색 창 포함해서 만들기(배너)-->
+    <br><br><br><br>
     <form name="input" method="get" action=""> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
         약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" disabled /required >
-        <input type="button" value="조회" onclick="inquirePharmName();"><br>
+        <input type="button" value="조회" onclick="inquirePharmName();"><br><br>
 
         <!-- 팝업 버튼 구현 필요함. -->
         약이름 <input type="text" class="nonDescription" name="drugName" disabled /required>
-        <input type="button" value="조회" onclick="inquireDrugName();"><br>
+        <input type="button" value="조회" onclick="inquireDrugName();"><br><br>
 
         <!-- 마찬가지. 팝업 버튼구현 필요함. -->
-        약가격 <input type="number" class="nonDescription" name="price" /required><br><br>
+        약가격 <input type="number" class="nonDescription" name="price" /required><br><br><br>
         내용 <input type="text" id="description" name="description" /required><br><br>
 
     <!-- 약국명 (with 조회)-->
     <!-- 약 이름 (with 조회)-->
     <!-- 약 가격(입력하고 집어넣기)-->
     <!-- 내용(입력박스로 만들고 집어넣기)-->
-
+        <br>
         첨부파일
         <input type="file" id = "imageFile" name="fileUpload" /required>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
