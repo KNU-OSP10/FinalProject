@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>얼마약?!</title>
     <style>
+        header{
+            text-align: center;
+            font:"백묵굴림";
+        }
+        header h1 span{
+            color:red;
+        }
+        header nav ul li {
+            display: inline;
+            margin:0 10px;
+        }
         form{
             text-align: center;
         }
@@ -19,26 +30,44 @@
     </style>
 </head>
 <body>
-    <!-- 위에 배너 만들기. 배너는 계속 쓸 수 있게 하기.-->
+
+    <header>
+        <h1>얼마<span>약</span></h1>
+        <div class="search">
+        <input type="text">
+        <button type="button"></button>
+        </div>
+        <nav>
+            <ul>
+                <li>약 랭킹</li>
+                <li>가까운 약국</li>
+                <li>약 제보</li>
+                <li>About us</li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
     <!-- 검색 창 포함해서 만들기(배너)-->
+    <br><br><br><br>
     <form name="input" method="get" action=""> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
         약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" disabled /required >
-        <input type="button" value="조회" onclick="inquirePharmName();"><br>
+        <input type="button" value="조회" onclick="inquirePharmName();"><br><br>
 
         <!-- 팝업 버튼 구현 필요함. -->
         약이름 <input type="text" class="nonDescription" name="drugName" disabled /required>
-        <input type="button" value="조회" onclick="inquireDrugName();"><br>
+        <input type="button" value="조회" onclick="inquireDrugName();"><br><br>
 
         <!-- 마찬가지. 팝업 버튼구현 필요함. -->
-        약가격 <input type="number" class="nonDescription" name="price" /required><br><br>
+        약가격 <input type="number" class="nonDescription" name="price" /required><br><br><br>
         내용 <input type="text" id="description" name="description" /required><br><br>
 
     <!-- 약국명 (with 조회)-->
     <!-- 약 이름 (with 조회)-->
     <!-- 약 가격(입력하고 집어넣기)-->
     <!-- 내용(입력박스로 만들고 집어넣기)-->
-
-        첨부파일 <input type="file" id = "imageFile" name="fileUpload" /required>
+        <br>
+        첨부파일
+        <input type="file" id = "imageFile" name="fileUpload" /required>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <!-- 첨부사진 집어넣기(파일선택 태그 넣고, 파일 선택할수 있게끔) -->
@@ -51,7 +80,7 @@
         }
         
         function inquireDrugName(){
-            window.open("html/testPopup.html","팝업 테스트","width=400,height=300,top=10,left=10");
+            window.open("testPopup.html","팝업 테스트","width=400,height=300,top=10,left=10");
         }
     </script>
 </body>
