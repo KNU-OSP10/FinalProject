@@ -9,3 +9,8 @@ def index():
 @app.route('/write_price')
 def write():
     return render_template('writePrice.html')
+
+@app.route('/report')
+def report():
+    return render_template('report.html')
+
