@@ -49,7 +49,7 @@
     <hr>
 
     <br><br><br><br>
-    <form name="input" method="get" action=""> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
+    <form name="input" method="get" action="app.py"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
         약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" disabled /required >
         <input type="button" value="조회" onclick="inquirePharmName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
 
@@ -63,7 +63,7 @@
     
         <br>
         첨부파일
-        <input type="file" id = "imageFile" name="fileUpload" /required> <!-- 첨부사진 집어넣기 구현부-->
+        <input type="file" id = "imageFile" name="fileUpload" /required> <!-- 첨부사진 집어넣기 구현부--><!-- 첨부파일은 DB에 넣을 수 있나?-->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
@@ -72,11 +72,11 @@
     </form>
     <script>
         function inquirePharmName(){    
-            window.open("testPopup.html","팝업 테스트","width=400,height=300,top=10,left=10")
+            window.open("testPharm.html","약국 테스트","width=400,height=300,top=10,left=10")
         }
         
         function inquireDrugName(){
-            window.open("testPopup.html","팝업 테스트","width=400,height=300,top=10,left=10");
+            window.open("testPopup.html","약 테스트","width=400,height=300,top=10,left=10");
         }
     </script>
 </body>
