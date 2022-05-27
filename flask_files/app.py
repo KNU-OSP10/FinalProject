@@ -37,21 +37,21 @@ def map_methodisTrue():
         global latitude
         global longitude
         global pharmacy_name
-        if len(lat) == 1:
+        if len(lat) == 1 or len(lat) == 2:
             latitude = (str(lat[0]).replace('(', '')).replace(',)','')
 
         cur.execute("select (long) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
         lon = cur.fetchall()
         con.commit()
         
-        if len(lon) == 1:
+        if len(lon) == 1 or len(lon) == 2:
             longitude = (str(lon[0]).replace('(', '')).replace(',)','')
 
         cur.execute("select (name) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
         name = cur.fetchall()
         con.commit()
         
-        if len(name) == 1:
+        if len(name) == 1 or len(name) == 2:
             pharmacy_name = (str(name[0]).replace('(', '')).replace(',)','')
             
 
@@ -100,3 +100,6 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     cur.close()
     con.close()
     return render_template('successInput.html')
+
+if __name__=='__main__':
+    app.run('0.0.0.0', port=5000, debug=True)
