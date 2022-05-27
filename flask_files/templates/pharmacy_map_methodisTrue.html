@@ -2,11 +2,76 @@
 <html>
 <head>
     <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">    
 
     <title>얼마약?</title>
     <style>
+
+          header{
+            text-align: center;
+
+        }
+        header h1 span{
+            color:red;
+        }
+        
+        header nav ul li {
+            display: inline;
+            margin:0 10px;
+        }
+
+        a:link { 
+            text-decoration: none; 
+            color: black;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        /*수정거침*/
+.import_search {
+  width: 100%;
+  position: relative;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid lightcoral;
+  border-right: none;
+  padding: 10px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: lightcoral;
+}
+
+.searchTerm:focus{
+  color: lightcoral;
+}
+
+.searchButton {
+    width: 3%;
+    height: 100%;
+    border: lightcoral;
+    background: lightcoral;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    margin-top:40px;
+    width: 40%;
+    position: relative;
+    text-align-last: center;
+    left: 15%;
+  transform: translate(-50%, -50%);
+}
+        
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap {position:relative;width:100%;height:100%;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
@@ -33,51 +98,39 @@
 <body style="text-align: -webkit-center;">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="http://20.84.55.133:5000/">얼마약?</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">약값 랭킹</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">가까운 약국</a>
-          </li>
-          <li class="nav-item dropdown">
-            <li class="nav-item">
-                <a class="nav-link disabled">약값 제보하기</a>
-              </li>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                더보기
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="margin-left: 25%;">
-              <li><a class="dropdown-item" href="#">문의 및 건의</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">About Us</a></li>
+<header> 
+        <h1>얼마<span>약</span></h1>
+        <div class="search">
+        <input type="text">
+        <button type="button"></button>
+        </div>
+        <nav>
+            <ul>
+                <a href="http://20.84.55.133:5000/"><li>약 랭킹</li></a>
+                <a href="http://20.84.55.133:5000/pharmacy_map"><li>가까운 약국</li></a>
+                <a href="http://20.84.55.133:5000/report"><li>약 제보</li></a>
+                <a href="http://20.84.55.133:5000/about_us"><li>About us</li></a>
             </ul>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="찾고있는 약 검색" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        </nav>
+    </header>
+    <hr>
+
+    <div class="wrap">
+        <div class="import_search">
+            <form action="http://20.84.55.133:5000/pharmacy_map_methodisTrue" method="POST">
+            <input type="text" class="searchTerm" name="search_pill" placeholder="약국을 검색해주세요">
+           <button type="submit" class="searchButton">
+             <i class="fa fa-search"></i>  
+          </button>
         </form>
-      </div>
-    </div>
-  </nav>
-
-
-
-
-
-<div class="map_wrapdad" style="border: solid;margin: 160px;width: 50%;height: 500px;">
+        </div>
+     </div>
+     <p style="position: relative;">경북대학교 주변 {{ name }}의 위치를 표시했습니다.</p>
+<div class="map_wrapdad" style="border: solid;margin: 10px;width: 50%;height: 500px;">
 <div class="map_wrap">
    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
-        <li id="PM9" data-order="1"> 
+	    <li id="PM9" data-order="1" class="on"> 
             <span class="category_bg pharmacy"></span>
             약국 표시하기
         </li>  
@@ -89,10 +142,7 @@
 </div>
 </div>
 
-<!-- Bootstrap 가져오기 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf98fa810827ed1b667b144d492947e0&libraries=services"></script>
-
-
 <script>
 // 위치정보를 가져오는 script
 function getLocation() {
@@ -123,12 +173,52 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(35.890630337434324, 128.61218168139706), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
-    };  
+    };
 
     getLocation();
 
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+
+
+// 마커를 표시할 위치와 title 객체 배열입니다 
+var pharmacy_lat = '{{ search_pill_lat }}';
+var pharmacy_long = '{{ search_pill_long }}';
+var positions = [
+    {
+        title: '약국', 
+        latlng: new kakao.maps.LatLng(pharmacy_lat, pharmacy_long)
+    }
+];
+
+// 마커 이미지의 이미지 주소입니다
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+    
+for (var i = 0; i < positions.length; i ++) {
+    
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new kakao.maps.Size(24, 35); 
+    
+    // 마커 이미지를 생성합니다    
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지 
+    });
+}
+
+
+
+
+
+
+
+
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map); 
@@ -256,7 +346,7 @@ function displayPlaceInfo (place) {
     }                
 
     content += '    <span class="tel">' + place.phone + '</span>' + 
-                '<a href="http://20.84.55.133:5000/write_price"><button type="button" class="btn btn-danger" style="height: 20px;width: 80px;margin-left: 5px;margin-bottom: 1.5px;">제보</button></a>'
+                '<a href="http://20.84.55.133:5000/report"><button type="button" class="btn btn-danger" style="height: 20px;width: 80px;margin-left: 5px;margin-bottom: 1.5px;">제보</button></a>'
                 +
                 '<a href="https://map.kakao.com/link/to/'+place.id+'">'+'<button type="button" class="btn btn-danger" style="height: 20px;width: 80px;margin-left: 5px;">길찾기</button></a>' 
                 +
@@ -313,5 +403,7 @@ function changeCategoryClass(el) {
 
 } 
 </script>
+
 </body>
 </html>
+

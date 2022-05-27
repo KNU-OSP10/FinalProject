@@ -19,14 +19,12 @@
             display: inline;
             margin:0 10px;
         }
-       .content{
-           text-align:center;
-           border:1px solid;
-           border-radius:10px;
-           margin:30px 100px;
-           line-height:2em;
-       }
        
+        a:link { 
+            text-decoration: none; 
+            color: black;
+        }
+
     </style>
 </head>
 <body>
@@ -38,16 +36,15 @@
         </div>
         <nav>
             <ul>
-                <li>약 랭킹</li>
-                <li>가까운 약국</li>
-                <li>약 제보</li>
-                <li>About us</li>
+                <a href="http://20.84.55.133:5000/"><li>약 랭킹</li></a>
+                <a href="http://20.84.55.133:5000/pharmacy_map"><li>가까운 약국</li></a>
+                <a href="http://20.84.55.133:5000/report"><li>약 제보</li></a>
+                <a href="http://20.84.55.133:5000/about_us"><li>About us</li></a>
             </ul>
         </nav>
     </header>
     <hr>
     <div class="content">
-    	약 랭킹
        {% block content %} {% endblock %}
     </div>
 </body>
