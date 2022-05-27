@@ -31,16 +31,16 @@ def reporting():
         database = 'seunghwan',
         user = "seunghwan",
         password = "seunghwan",
-        port = 8081
+        port = 5432
     )
     cur = con.cursor()
     
-    drug = request.form('drugName')
-    pharmacy = request.form('pharmName')
-    price = request.form('price')
-    description = request.form('description')
+    drug = request.args.get("drugName","",str)
+    pharmacy = request.args.get("pharmName","",str)
+    price = request.args.get("price","0",int)
+    description = request.args.get("description","",str)
     
-    query = "insert into pharmacy_schema.report(drug,pharmacy,price,description) value({0},{1},{2},{3})".format(drug,pharmacy,price,description)
+    query = "insert into pharmacy_schema.report(drug,pharmacy,price,description) values('{0}','{1}','{2}','{3}')".format(drug,pharmacy,price,description)
     cur.execute(query)
     
     con.commit()
