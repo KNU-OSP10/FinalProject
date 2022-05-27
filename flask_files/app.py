@@ -25,7 +25,7 @@ def pharmFind():
     return render_template('testPharm.html')
 
 @app.route('/reporting', methods = ['GET'])
-def reporting():
+def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     con = psycopg2.connect(
         host = "20.84.55.133",
         database = 'seunghwan',
