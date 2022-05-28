@@ -13,13 +13,13 @@ def index():
             password = "seunghwan",
             port=5432
             )
-	cur=conn.cursor()
-	cur.execute('select rank() over (order by see desc) as rank,itemname,min from pharmacy_schema.pills_list join (select drug,min(price) from pharmacy_schema.drug_ranking22 group by drug) as a on pills_list.itemname=a.drug order by see desc limit 5;'
-	)
-	medi=cur.fetchall()
-	cur.close()
-	conn.close()
-	return render_template('base_db.html', medi=medi)
+    cur=conn.cursor()
+    cur.execute('select rank() over (order by see desc) as rank,itemname,min from pharmacy_schema.pills_list join (select drug,min(price) from pharmacy_schema.drug_ranking22 group by drug) as a on pills_list.itemname=a.drug order by see desc limit 5;'
+    )
+    medi=cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('base_db.html', medi=medi)
 
 # 지도 창
 @app.route('/pharmacy_map')
