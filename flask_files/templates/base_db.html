@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for medi in medi%}
+        <div class='medi'>
+            <h3>{{medi[0]}}. {{medi[1]}} {{medi[2]}} </h3>
+        </div>
+    {% endfor %}
+{% endblock %}
