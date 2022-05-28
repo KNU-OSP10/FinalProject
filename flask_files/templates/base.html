@@ -24,7 +24,13 @@
             text-decoration: none; 
             color: black;
         }
-
+        .content{
+           text-align:center;
+           border:1px solid;
+           border-radius:10px;
+           margin:30px 100px;
+           line-height:2em;
+       }
     </style>
 </head>
 <body>
@@ -45,6 +51,7 @@
     </header>
     <hr>
     <div class="content">
+        약 랭킹
        {% block content %} {% endblock %}
     </div>
 </body>
