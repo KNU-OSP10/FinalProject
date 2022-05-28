@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    conn = psycopg2.connect(
+    con = psycopg2.connect(
             host = "20.84.55.133",
             database = "seunghwan",
             user = "seunghwan",
