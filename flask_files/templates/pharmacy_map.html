@@ -131,11 +131,11 @@
 <div class="map_wrap">
    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
-        <li id="PM9" data-order="1"> 
+        <li id="PM9" data-order="2"> 
             <span class="category_bg pharmacy"></span>
             약국 표시하기
         </li>  
-        <li id="" data-order="2"> 
+        <li id=""> 
             <span class=""><img src=https://cdn-icons-png.flaticon.com/512/1483/1483336.png style="height:100%; width:100%;"></span>
             내 위치 표시
         </li>  
@@ -337,6 +337,7 @@ function onClickCategory() {
     placeOverlay.setMap(null);
 
     if (className === 'on') {
+        
         currCategory = '';
         changeCategoryClass();
         removeMarker();

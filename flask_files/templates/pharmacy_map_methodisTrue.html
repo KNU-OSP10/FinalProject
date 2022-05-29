@@ -125,16 +125,22 @@
         </form>
         </div>
      </div>
-     <p style="position: relative;">경북대학교 주변 {{ name }}의 위치를 표시했습니다.</p>
+     <p id="pharmacy_name_list" style="position: relative;">
+     경북대학교 주변
+     	{% for item in data_name %}
+     		{{item }}
+	{% endfor %}
+     의 위치를 표시했습니다.
+    </p>
 <div class="map_wrapdad" style="border: solid;margin: 10px;width: 50%;height: 500px;">
 <div class="map_wrap">
    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
-	    <li id="PM9" data-order="1"> 
+	    <li id="PM9" data-order="2"> 
             <span class="category_bg pharmacy"></span>
             약국 표시하기
         </li>  
-        <li id="" data-order="2"> 
+        <li id="" data-order=""> 
             <span class=""><img src=https://cdn-icons-png.flaticon.com/512/1483/1483336.png style="height:100%; width:100%;"></span>
             내 위치 표시
         </li>  
@@ -181,16 +187,25 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 
+var latitudes = {{ data_lat | safe }}
+var longitudes = {{ data_long | safe }}
 
 // 마커를 표시할 위치와 title 객체 배열입니다 
-var pharmacy_lat = '{{ search_pill_lat }}';
-var pharmacy_long = '{{ search_pill_long }}';
+var pharmacy_lat = latitudes;
+var pharmacy_long = longitudes;
+// 여러개 뜰 수 있도록 객체 배열에 위치정보 추가 
 var positions = [
     {
         title: '약국', 
-        latlng: new kakao.maps.LatLng(pharmacy_lat, pharmacy_long)
+        latlng: new kakao.maps.LatLng(pharmacy_lat[0], pharmacy_long[0])
     }
 ];
+for (var i=1; i < pharmacy_lat.length; i++){
+	positions.push({
+		title: '약국',
+		latlng: new kakao.maps.LatLng(pharmacy_lat[i], pharmacy_long[i])});
+}
+	
 
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -406,4 +421,5 @@ function changeCategoryClass(el) {
 
 </body>
 </html>
+
 

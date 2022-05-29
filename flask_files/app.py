@@ -2,16 +2,17 @@ from crypt import methods
 from multiprocessing.sharedctypes import Value
 from flask import Flask, render_template, request
 import psycopg2
+import json
+
 
 def connectDB():
     conn = psycopg2.connect(
-            host = "20.84.55.133",
-            database = "seunghwan",
-            user = "seunghwan",
-            password = "seunghwan",
-            port=5432
-            )
-    
+        host = "20.84.55.133",
+        database = "seunghwan",
+        user = "seunghwan",
+        password = "seunghwan",
+        port=5432
+        )
     return conn
 
 app = Flask(__name__)
@@ -35,47 +36,32 @@ def map():
 # 지도 검색 후 나오는 창
 @app.route('/pharmacy_map_methodisTrue', methods=['POST'])
 def map_methodisTrue():
-    lat = []
-    lon = []
+    find = []
+    latitude = []
+    longitude = []
+    pharmacy_name = []
     if request.method == 'POST':
+        
         search_pill = request.form['search_pill']
         con = connectDB()
         cur = con.cursor()
         
-        cur.execute("select (lat) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
-        lat = cur.fetchall()
-        con.commit()
+        cur.execute("select (lat, long, name) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
+        find = cur.fetchall()
         
-        global latitude
-        global longitude
-        global pharmacy_name
-        if len(lat) == 1 or len(lat) == 2:
-            latitude = (str(lat[0]).replace('(', '')).replace(',)','')
-
-        cur.execute("select (long) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
-        lon = cur.fetchall()
-        con.commit()
-        
-        if len(lon) == 1 or len(lon) == 2:
-            longitude = (str(lon[0]).replace('(', '')).replace(',)','')
-
-        cur.execute("select (name) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
-        name = cur.fetchall()
-        con.commit()
-        
-        if len(name) == 1 or len(name) == 2:
-            pharmacy_name = (str(name[0]).replace('(', '')).replace(',)','')
-            
+        if len(find) >= 1:
+            for i in range(len(find)):
+                latitude.append(((find[i][0].replace('(', '')).replace(')','')).split(",")[0])
+                longitude.append(((find[i][0].replace('(', '')).replace(')','')).split(",")[1])
+                pharmacy_name.append(((find[i][0].replace('(', '')).replace(')','')).split(",")[2])
 
         cur.close()
         con.close()
 
-        print(len(lat))
-        if len(lat) == 0:
+        if len(find) == 0:
             return render_template('pharmacy_map.html')
         else:
-            return render_template('pharmacy_map_methodisTrue.html', search_pill_lat=latitude, search_pill_long=longitude, name=pharmacy_name)
-
+            return render_template('pharmacy_map_methodisTrue.html',data_lat=json.dumps(latitude), data_long=json.dumps(longitude), data_name=pharmacy_name)
 
 @app.route('/report')
 def report():
@@ -109,3 +95,4 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
 
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+
