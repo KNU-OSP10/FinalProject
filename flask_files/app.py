@@ -107,7 +107,7 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     con.close()
     return render_template('successInput.html')
 
-@app.route('/findPharmacy', methods = ['POST'])
+@app.route('/findPharmacy')
 def findPharmacy():
     con = connectDB()
     cur = con.cursor()
