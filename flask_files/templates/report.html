@@ -49,12 +49,12 @@
     <hr>
 
     <br><br><br><br>
-    <form name="input" method="GET" action="http://20.84.55.133:5000/reporting"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
-        약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" disabled /required >
+    <form name="input" method="GET" action="http://20.127.94.140:5000/reporting"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
+        약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" readonly /required >
         <input type="button" value="조회" onclick="inquirePharmName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
 
         
-        약이름 <input type="text" class="nonDescription" id = "drugName" name="drugName" disabled /required> 
+        약이름 <input type="text" class="nonDescription" id = "drugName" name="drugName" readonly /required> 
         <input type="button" value="조회" onclick="inquireDrugName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
 
         

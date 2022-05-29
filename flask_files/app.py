@@ -107,18 +107,19 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     con.close()
     return render_template('successInput.html')
 
-@app.route('/findPharmacy')
+@app.route('/findPharmacy', methods = ['POST'])
 def findPharmacy():
     con = connectDB()
     cur = con.cursor()
     
-    cur.execute("select * from pharmacy_schema.bukku_list where name like '%대%'")
-    pharmacy = cur.fetchall()
+    if request.method == 'POST':
+        keyword = request.form['input']
+        cur.execute("select * from pharmacy_schema.bukku_list where name like '%{0}%'".format(keyword))
+        pharmacy = cur.fetchall()
     
     cur.close()
     con.close()
     return render_template('testPrint.html',pharmacy = pharmacy)
     
-
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)
