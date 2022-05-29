@@ -3,17 +3,22 @@ from multiprocessing.sharedctypes import Value
 from flask import Flask, render_template, request
 import psycopg2
 
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    con = psycopg2.connect(
+def connectDB():
+    conn = psycopg2.connect(
             host = "20.84.55.133",
             database = "seunghwan",
             user = "seunghwan",
             password = "seunghwan",
             port=5432
-        )
+            )
+    
+    return conn
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    con = connectDB()
     
     cur = con.cursor()
     cur.execute('select rank() over (order by see desc) as rank,itemname,min from pharmacy_schema.pills_list join (select drug,min(price) from pharmacy_schema.drug_ranking22 group by drug) as a on pills_list.itemname=a.drug order by see desc limit 5;')
@@ -34,14 +39,7 @@ def map_methodisTrue():
     lon = []
     if request.method == 'POST':
         search_pill = request.form['search_pill']
-        con = psycopg2.connect(
-            host = "20.84.55.133",
-            database = "seunghwan",
-            user = "seunghwan",
-            password = "seunghwan",
-            port=5432
-            )
-
+        con = connectDB()
         cur = con.cursor()
         
         cur.execute("select (lat) from pharmacy_schema.bukku_list where name like '%{}%'".format(search_pill))
@@ -93,13 +91,7 @@ def pharmFind():
 
 @app.route('/reporting', methods = ['GET'])
 def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
-    con = psycopg2.connect(
-        host = "20.84.55.133",
-        database = 'seunghwan',
-        user = "seunghwan",
-        password = "seunghwan",
-        port = 5432
-    )
+    con = connectDB()
     cur = con.cursor()
     
     drug = request.args.get("drugName","",str)
