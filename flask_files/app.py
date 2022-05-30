@@ -115,8 +115,6 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     con.close()
     return render_template('successInput.html')
 
-if __name__=='__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
 
 #search창 - 검색 기능 추가하기 전
 @app.route('/search')
@@ -143,3 +141,6 @@ def search():
 @app.route('/testsearch')
 def test():
     return render_template('testsearch.html')
+
+if __name__=='__main__':
+    app.run('0.0.0.0', port=5000, debug=True)
