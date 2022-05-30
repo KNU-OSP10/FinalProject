@@ -115,8 +115,7 @@ def findPharmacy():
     if request.method == 'POST':
         
         keyword = request.form['pharmName']
-        print(keyword)
-        cur.execute("select * from pharmacy_schema.bukku_list where name like '%{0}%'".format(keyword))#
+        cur.execute("select * from pharmacy_schema.bukku_list where name like '%{0}%'".format(keyword))
         pharmacy = cur.fetchall()
     
         cur.close()
@@ -124,6 +123,22 @@ def findPharmacy():
         return render_template('findPharm2.html', pharmacy = pharmacy)
     else:
         return render_template('findPharm.html')
+
+@app.route('/findDrugs', methods = ['GET', 'POST'])
+def findDrugs():
+    con = connectDB()
+    cur = con.cursor()
+    
+    if request.method == "POST":
+        keyword = request.form['drugName']
+        cur.execute("select * from pharmacy_schema.pills_list where itemname like '%{0}%'".format(keyword))
+        drugs = cur.fetchall()
+        
+        cur.close()
+        con.close()
+        return render_template('findDrug2.html', drugs = drugs)
+    else:
+        return render_template('findDrug.html')
     
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)

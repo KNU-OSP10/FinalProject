@@ -49,7 +49,7 @@
     <hr>
 
     <br><br><br><br>
-    <form name="input" method="GET" action="http://20.127.94.140:5000/reporting"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
+    <form name="input" method="GET" action="/reporting"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
         약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" readonly /required >
         <input type="button" value="조회" onclick="inquirePharmName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
 
@@ -76,7 +76,7 @@
         }
         
         function inquireDrugName(){
-            window.open("http://20.127.94.140:5000/drugFind","약 테스트","width=400,height=300,top=10,left=10");
+            window.open("/findDrugs","약 테스트","width=400,height=300,top=10,left=10");
         }
     </script>
 </body>

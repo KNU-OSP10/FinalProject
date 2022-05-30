@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약이름 DB에 표시</title>
+    <style>
+        #afterClick{
+            display : none;
+        }
+    </style>
+</head>
+<body>
+    <form name="input" method="POST" action="/findDrugs">
+        <input type="text" id="drugName" name="drugName" /required>
+        <input type="submit" value="검색">
+    </form>
+
+    <h1 id="afterClick">약이름 DB에 표시</h1>
+    {% block content %}
+        {% for drugs in drugs %}
+            <div class='drugs'>
+                <p id="drugs{{drugs[0]}}">이름 : {{drugs[1]}}  // 제약사 : {{drugs[2]}} </p>
+            </div>
+            <script>
+                document.getElementById("drugs{{drugs[0]}}").addEventListener("click", () =>{
+                    opener.document.getElementById("drugName").value = "{{drugs[1]}}";
+                    window.close();
+                })
+            </script>
+        {% endfor %}
+    {% endblock %}
+</body>
+</html>
