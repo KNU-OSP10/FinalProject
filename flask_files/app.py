@@ -132,7 +132,7 @@ def search():
     con = connectDB()
     cur = con.cursor()
 
-     if request.method == "POST":
+    if request.method == "POST":
         keyword = request.form['druginput']
         cur.execute("SELECT * FROM pharmacy_schema.pills_list where itemname like '%{0}%'".format(keyword))
         descript = cur.fetchall()
