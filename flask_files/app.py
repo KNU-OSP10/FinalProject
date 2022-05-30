@@ -129,13 +129,9 @@ def findDrugs():
 #search창 - 검색 기능 추가하기 전
 @app.route('/search')
 def search():
-    con = psycopg2.connect(host = "20.84.55.133",
-            database = "seunghwan",
-            user = "seunghwan",
-            password = "seunghwan",
-            port=5432)
+    con = connectDB()
     cur = con.cursor()
-
+    
     cur.execute('SELECT * FROM pharmacy_schema.pills_list limit 1')
     descript = cur.fetchall()
     con.commit()
