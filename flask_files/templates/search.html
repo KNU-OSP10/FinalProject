@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>얼마약?!</title>
+    <style>
+        header{
+            text-align: center;
+        }
+        header h1 span{
+            color:red;
+        }
+        header nav ul li {
+            display: inline;
+            margin:0 10px;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content-title {
+            display: flex;
+            align-items: center;
+            width: 500px;
+            background-color:whitesmoke;
+            font-size: x-large;
+        }
+        
+        .point {
+            color: red;
+            padding-right: 5px;
+        }
+        
+        .descript{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0px 60px;
+        }
+        .descript {
+            margin-bottom: 100px;
+            height: 200px;
+            width: 500px;
+        }
+        .descript__effect {
+            margin-bottom: 15px;
+        }
+        .descript__type {
+            font-size: large;
+            font-weight: 500;
+        }
+        
+        .ranking {
+            height: 250px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        .ranking__rank {
+            font-size: large;
+            padding-bottom: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>얼마<span>약</span></h1>
+        <form class="search">
+            <input class="search_medi" type="text" name="search">
+            <button class="search_btn" type="submit" name="click" value=""></button>
+        </form>
+        <nav>
+            <ul>
+                <a href="http://20.84.55.133:5000/"><li>약 랭킹</li></a>
+                <a href="http://20.84.55.133:5000/pharmacy_map"><li>가까운 약국</li></a>
+                <a href="http://20.84.55.133:5000/report"><li>약 제보</li></a>
+                <a href="http://20.84.55.133:5000/about_us"><li>About us</li></a>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="content">
+        <div class="content-title"><div class="point">약</div>설명</div>
+        <div class="descript">
+            <!--약 설명 추가 / 링크 연동 !-->
+            <div class="descript__name"><h1><!--약 이름!--></h1></div>
+            <div class="descript__effect">
+                <div class="descript__type">
+                    약 효과:
+                </div>
+                <div class="descript__detail">
+                    <!-- <p> 어떻게 지우지,,? !-->
+                    {{descript[0][3]}}
+                </div>
+            </div>
+            <div class="descript__how">
+                <div class="descript__type">
+                    복용 방법:
+                </div>
+                <div class="descript__detail">
+                    {{descript[0][4]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="content-title"><div class="point">약</div>랭킹</div>
+        <div class="ranking">
+            <ol>
+                {% for ranks in ranks%}
+                <li>
+                    <div class="ranking__rank">
+                        <!-- index 추가 어떻게 하는거여 -->
+                        <span class="ranking__num"></span>
+                        <span class="ranking__pharmacy">{{ranks[2]}}</span>
+                        <span class="ranking__price">{{ranks[3]}}</span>
+                        <span class="ranking__updown">{{ranks[4]}}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+</html>
