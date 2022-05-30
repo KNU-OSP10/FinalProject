@@ -24,11 +24,16 @@
             display: inline;
             margin:0 10px;
         }
+
+        a:link { 
+            text-decoration: none; 
+            color: black;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>얼마<span>약</span></h1>
+        <a href="http://20.84.55.133:5000/"><h1>얼마<span>약</span></h1></a>
         <form class="search" method="post" action="{{ url_for('search') }}">
             <!-- 검색창 구현 -->
             <input class="search_input" type="text" name="druginput">
