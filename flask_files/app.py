@@ -117,7 +117,7 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
 
 
 #search창 - 검색 기능 추가하기 전
-@app.route('/search')
+@app.route('/search', methods = ['GET', 'POST'])
 def search():
     con = psycopg2.connect(host = "20.84.55.133",
             database = "seunghwan",
@@ -126,16 +126,18 @@ def search():
             port=5432)
     cur = con.cursor()
 
-    cur.execute('SELECT * FROM pharmacy_schema.pills_list limit 1')
-    descript = cur.fetchall()
-    con.commit()
+    if request.method == "POST":
+        keyword = request.form['druginput']
+        cur.execute("SELECT * FROM pharmacy_schema.pills_list where itemname like '%{0}%'".format(keyword))
+        descript = cur.fetchall()
+        con.commit()
 
-    cur.execute('SELECT * FROM pharmacy_schema.drug_ranking22 order by 3 limit 5')
-    ranks = cur.fetchall()
-    cur.close()
+        cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by 3 limit 5".format(keyword))
+        ranks = cur.fetchall()
+        cur.close()
 
-    con.close()
-    return render_template('search.html', descript=descript, ranks=ranks)
+        con.close()
+        return render_template('search.html', descript=descript, ranks=ranks)
 
 #test search - 검색 기능 시험 용
 @app.route('/testsearch')

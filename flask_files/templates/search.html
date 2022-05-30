@@ -112,16 +112,19 @@
 
         <div class="content-title"><div class="point">약</div>랭킹</div>
         <div class="ranking">
-            {% for ranks in ranks%}
-            <div class="ranking__rank">
-                <!-- index 추가 어떻게 하는거여 -->
-                <span class="ranking__num"></span>
-                <span class="ranking__name">{{ranks[1]}}</span>
-                <span class="ranking__pharmacy">{{ranks[2]}}</span>
-                <span class="ranking__price">{{ranks[3]}}</span>
-                <span class="ranking__updown">{{ranks[4]}}</span>
-            </div>
-            {% endfor %}
+            <ol>
+                {% for ranks in ranks%}
+                <li>
+                    <div class="ranking__rank">
+                        <!-- index 추가 어떻게 하는거여 -->
+                        <span class="ranking__num"></span>
+                        <span class="ranking__pharmacy">{{ranks[2]}}</span>
+                        <span class="ranking__price">{{ranks[3]}}</span>
+                        <span class="ranking__updown">{{ranks[4]}}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
         </div>
     </div>
 
