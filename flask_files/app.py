@@ -126,7 +126,7 @@ def findDrugs():
     else:
         return render_template('findDrug.html')
 
-#search창 - 검색 기능 추가하기 전
+#search창
 @app.route('/search')
 def search():
     con = connectDB()
