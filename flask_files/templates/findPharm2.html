@@ -5,25 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>약국 DB에 표시</title>
-    <style>
-        #afterClick{
-            display : none;
-        }
-    </style>
 </head>
 <body>
-    <form name="input" method="GET" action="http://20.127.94.140:5000/findPharmacy">
+    <h1></h1>
+    <form name="input" method="POST" action="/findPharmacy">
         <input type="text" id="pharmName" name="pharmName" /required>
-        <input type="button" value="조회" onclick="() => {document.getElementById(afterClick).style.display = 'block';};">
+        <input type="submit" value="검색">
     </form>
     <h1 id="afterClick">약국 DB에 표시</h1>
     {% block content %}
         {% for pharmacy in pharmacy%}
             <div class='medi'>
-                <h3>이름 : {{pharmacy[4]}}  // 주소 : {{pharmacy[3]}} </h3>
+                <p id="pharmacy{{pharmacy[0]}}">이름 : {{pharmacy[4]}}  // 주소 : {{pharmacy[3]}} </p>
             </div>
+            <script>
+                document.getElementById("pharmacy{{pharmacy[0]}}").addEventListener("click", () =>{
+                    opener.document.getElementById("pharmName").value = "{{pharmacy[4]}}";
+                    window.close();
+                })
+            </script>
         {% endfor %}
     {% endblock %}
-
+    
 </body>
 </html>

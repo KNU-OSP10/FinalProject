@@ -1,4 +1,4 @@
-from crypt import methods
+# from crypt import methods
 from multiprocessing.sharedctypes import Value
 from flask import Flask, render_template, request
 import psycopg2
@@ -107,19 +107,23 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     con.close()
     return render_template('successInput.html')
 
-@app.route('/findPharmacy', methods = ['POST'])
+@app.route('/findPharmacy' , methods = ['GET', 'POST'])
 def findPharmacy():
     con = connectDB()
     cur = con.cursor()
     
     if request.method == 'POST':
-        keyword = request.form['input']
-        cur.execute("select * from pharmacy_schema.bukku_list where name like '%{0}%'".format(keyword))
+        
+        keyword = request.form['pharmName']
+        print(keyword)
+        cur.execute("select * from pharmacy_schema.bukku_list where name like '%{0}%'".format(keyword))#
         pharmacy = cur.fetchall()
     
-    cur.close()
-    con.close()
-    return render_template('testPrint.html',pharmacy = pharmacy)
+        cur.close()
+        con.close()
+        return render_template('findPharm2.html', pharmacy = pharmacy)
+    else:
+        return render_template('findPharm.html')
     
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)
