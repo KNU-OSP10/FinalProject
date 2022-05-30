@@ -26,6 +26,14 @@
             </script>
         {% endfor %}
     {% endblock %}
-    
+    <p>혹시 해당 약국이 없으신가요?</p>
+    <input type="text" id="newName">
+    <input type="submit" value="입력" id="newClick">
+    <script>
+        document.getElementById("newClick").addEventListener("click", () => {
+            opener.document.getElementById("pharmName").value = document.getElementById("newName").value;
+            window.close();
+        })
+    </script>
 </body>
 </html>

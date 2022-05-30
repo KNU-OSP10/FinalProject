@@ -5,11 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>약이름 DB에 표시</title>
-    <style>
-        #afterClick{
-            display : none;
-        }
-    </style>
 </head>
 <body>
     <form name="input" method="POST" action="/findDrugs">
@@ -31,5 +26,15 @@
             </script>
         {% endfor %}
     {% endblock %}
+
+    <p>혹시 관련 약이 없으신가요?</p>
+    <input type="text" id="newName">
+    <input type="submit" value="입력" id="newClick">
+    <script>
+        document.getElementById("newClick").addEventListener("click", () => {
+            opener.document.getElementById("drugName").value = document.getElementById("newName").value;
+            window.close();
+        })
+    </script>
 </body>
 </html>
