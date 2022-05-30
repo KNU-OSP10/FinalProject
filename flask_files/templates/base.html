@@ -36,10 +36,11 @@
 <body>
     <header>
         <h1>얼마<span>약</span></h1>
-        <div class="search">
-        <input type="text">
-        <button type="button"></button>
-        </div>
+        <form class="search" method="post" action="{{ url_for('search') }}">
+            <!-- 검색창 구현 -->
+            <input class="search_input" type="text" name="druginput">
+            <button class="search_btn" type="submit" >검색</button>
+        </form>
         <nav>
             <ul>
                 <a href="http://20.84.55.133:5000/"><li>약 랭킹</li></a>
