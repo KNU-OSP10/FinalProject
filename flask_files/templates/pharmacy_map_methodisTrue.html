@@ -107,7 +107,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 <header> 
-        <h1>얼마<span>약</span></h1>
+        <a href="http://20.84.55.133:5000/"><h1>얼마<span>약</span></h1></a>
         <div class="search">
         <input type="text">
         <button type="button"></button>
@@ -177,6 +177,15 @@ function getLocation() {
 }
 
 
+
+var latitudes = {{ data_lat | safe }}
+var longitudes = {{ data_long | safe }}
+
+// 마커를 표시할 위치와 title 객체 배열입니다 
+var pharmacy_lat = latitudes;
+var pharmacy_long = longitudes;
+// 여러개 뜰 수 있도록 객체 배열에 위치정보 추가 
+
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
@@ -185,7 +194,7 @@ var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}),
  
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(35.890630337434324, 128.61218168139706), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(pharmacy_lat[0], pharmacy_long[0]), // 지도의 중심좌표
         level: 5 // 지도의 확대 레벨
     };
 
@@ -195,13 +204,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 
-var latitudes = {{ data_lat | safe }}
-var longitudes = {{ data_long | safe }}
-
-// 마커를 표시할 위치와 title 객체 배열입니다 
-var pharmacy_lat = latitudes;
-var pharmacy_long = longitudes;
-// 여러개 뜰 수 있도록 객체 배열에 위치정보 추가 
 var positions = [
     {
         title: '약국', 
@@ -429,5 +431,6 @@ function changeCategoryClass(el) {
 
 </body>
 </html>
+
 
 
