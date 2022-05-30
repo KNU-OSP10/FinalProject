@@ -131,17 +131,19 @@ def findDrugs():
 def search():
     con = connectDB()
     cur = con.cursor()
-    
-    cur.execute('SELECT * FROM pharmacy_schema.pills_list limit 1')
-    descript = cur.fetchall()
-    con.commit()
 
-    cur.execute('SELECT * FROM pharmacy_schema.drug_ranking22 order by 3 limit 5')
-    ranks = cur.fetchall()
-    cur.close()
+     if request.method == "POST":
+        keyword = request.form['druginput']
+        cur.execute("SELECT * FROM pharmacy_schema.pills_list where itemname like '%{0}%'".format(keyword))
+        descript = cur.fetchall()
+        con.commit()
 
-    con.close()
-    return render_template('search.html', descript=descript, ranks=ranks)
+        cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by 3 limit 5".format(keyword))
+        ranks = cur.fetchall()
+        cur.close()
+
+        con.close()
+        return render_template('search.html', descript=descript, ranks=ranks)
 
 #test search - 검색 기능 시험 용
 @app.route('/testsearch')
