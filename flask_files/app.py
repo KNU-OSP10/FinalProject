@@ -127,7 +127,7 @@ def findDrugs():
         return render_template('findDrug.html')
 
 #search창
-@app.route('/search')
+@app.route('/search', methods = ['POST'])
 def search():
     con = connectDB()
     cur = con.cursor()
@@ -140,6 +140,7 @@ def search():
 
         cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by 3 limit 5".format(keyword))
         ranks = cur.fetchall()
+        con.commit()
         cur.close()
 
         con.close()
