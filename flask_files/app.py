@@ -126,31 +126,31 @@ def findDrugs():
     else:
         return render_template('findDrug.html')
 
-
-@app.route('/reporting', methods = ['GET'])
-def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
-    con = psycopg2.connect(
-        host = "20.84.55.133",
-        database = 'seunghwan',
-        user = "seunghwan",
-        password = "seunghwan",
-        port = 5432
-    )
+#search창 - 검색 기능 추가하기 전
+@app.route('/search')
+def search():
+    con = psycopg2.connect(host = "20.84.55.133",
+            database = "seunghwan",
+            user = "seunghwan",
+            password = "seunghwan",
+            port=5432)
     cur = con.cursor()
-    
-    drug = request.args.get("drugName","",str)
-    pharmacy = request.args.get("pharmName","",str)
-    price = request.args.get("price","0",int)
-    description = request.args.get("description","",str)
-    
-    query = "insert into pharmacy_schema.report(drug,pharmacy,price,description) values('{0}','{1}','{2}','{3}')".format(drug,pharmacy,price,description)
-    cur.execute(query)
-    
-    con.commit()
-    cur.close()
-    con.close()
-    return render_template('successInput.html')
 
+    cur.execute('SELECT * FROM pharmacy_schema.pills_list limit 1')
+    descript = cur.fetchall()
+    con.commit()
+
+    cur.execute('SELECT * FROM pharmacy_schema.drug_ranking22 order by 3 limit 5')
+    ranks = cur.fetchall()
+    cur.close()
+
+    con.close()
+    return render_template('search.html', descript=descript, ranks=ranks)
+
+#test search - 검색 기능 시험 용
+@app.route('/testsearch')
+def test():
+    return render_template('testsearch.html')
 
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)
