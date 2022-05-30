@@ -93,6 +93,38 @@ def reporting(): # html에서 form 받아서 DB에 집어넣는 과정 완성
     con.close()
     return render_template('successInput.html')
 
+@app.route('/findPharmacy' , methods = ['GET', 'POST'])
+def findPharmacy():
+    
+    if request.method == 'POST':
+        con = connectDB()
+        cur = con.cursor()
+        
+        keyword = request.form['pharmName']
+        cur.execute("select * from pharmacy_schema.bukku_list where name like '%{0}%'".format(keyword))
+        pharmacy = cur.fetchall()
+    
+        cur.close()
+        con.close()
+        return render_template('findPharm2.html', pharmacy = pharmacy)
+    else:
+        return render_template('findPharm.html')
+
+@app.route('/findDrugs', methods = ['GET', 'POST'])
+def findDrugs():
+    
+    if request.method == "POST":
+        con = connectDB()
+        cur = con.cursor()
+        keyword = request.form['drugName']
+        cur.execute("select * from pharmacy_schema.pills_list where itemname like '%{0}%'".format(keyword))
+        drugs = cur.fetchall()
+        
+        cur.close()
+        con.close()
+        return render_template('findDrug2.html', drugs = drugs)
+    else:
+        return render_template('findDrug.html')
+
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)
-
