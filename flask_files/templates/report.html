@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>얼마약?!</title>
     <style>
+        @font-face {
+            font-family: 'SANJUGotgam';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANJUGotgam.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body{
+            font-family : 'SANJUGotgam';
+            height: 100%;
+            width: 100%;
+            background: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/pharmacy_background.jpeg?raw=true") no-repeat;
+            background-size: cover;
+        }
         header{
             text-align: center;
             font:"백묵굴림";
@@ -17,26 +30,36 @@
             display: inline;
             margin:0 10px;
         }
+        #container{
+            margin : auto;
+            margin-top: 3%;
+            text-align : center;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-image: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/reportingBlock.jpg?raw=true");
+            background-size: contain;
+            height: 650px;
+            width: auto;
+        }
         form{
-            text-align: center;
+            display : inline;
         }
         .nonDescription{
-            width: 485px;
+            width: 260px;
         }
         #description{
-            width: 500px;
+            width: 260px;
             height: 100px;
+        }
+        #submitButton{
+            width : 370px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>얼마<span>약</span></h1>
-        <div class="search">
-        <input type="text">
-        <button type="button"></button>
-        </div>
+        <h1><a href = "/">얼마<span>약</span></a></h1>
         <nav>
             <ul>
                 <a href="http://20.127.94.140:5000/"><li>약 랭킹</li></a>
@@ -48,28 +71,35 @@
     </header>
     <hr>
 
-    <br><br><br><br>
-    <form name="input" method="GET" action="/reporting"> <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
-        약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" readonly /required >
-        <input type="button" value="조회" onclick="inquirePharmName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
-
-        
-        약이름 <input type="text" class="nonDescription" id = "drugName" name="drugName" readonly /required> 
-        <input type="button" value="조회" onclick="inquireDrugName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
-
-        
-        약가격 <input type="number" class="nonDescription" name="price" /required><br><br><br> <!-- 약 가격(입력하고 집어넣기)-->
-        내용 <input type="text" id="description" name="description" /required><br><br> <!-- 내용(입력박스로 만들고 집어넣기)-->
+    <div id = "container"><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <form name="input" method="GET" action="/reporting" > <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
+            
+            약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" readonly /required >
+            <input type="button" value="조회" onclick="inquirePharmName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
     
-        <br>
-        <!--첨부파일
-        <input type="file" id = "imageFile" name="fileUpload" /required> 첨부사진 집어넣기 구현부--><!-- 첨부파일은 DB에 넣을 수 있나?-->
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            약이름 <input type="text" class="nonDescription" id = "drugName" name="drugName" readonly /required> 
+            <input type="button" value="조회" onclick="inquireDrugName();"><br><br> <!-- 직접입력 금지하고, 조회 버튼 완료-->
     
-        <input type="submit" value="전송"> <!-- 제출 버튼 누르면 제출됨.-->
-     
-    </form>
+            
+            약가격 <input type="number" class="nonDescription" name="price" /required>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br><br><br> <!-- 약 가격(입력하고 집어넣기)-->
+            내용 &nbsp <input type="text" id="description" name="description" /required>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br><br> <!-- 내용(입력박스로 만들고 집어넣기)-->
+        
+            <br>
+            <!--첨부파일
+            <input type="file" id = "imageFile" name="fileUpload" /required> 첨부사진 집어넣기 구현부--><!-- 첨부파일은 DB에 넣을 수 있나?-->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+            <input type="image" alt="제출버튼" 
+            id="submitButton"src="https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/submitButton.jpg?raw=true" > <!-- 제출 버튼 누르면 제출됨.-->
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </form><br><br><br><br>
+    </div>    
+    
     <script>
         function inquirePharmName(){    
             window.open("/findPharmacy","약국 테스트","width=400,height=300,top=10,left=10")
