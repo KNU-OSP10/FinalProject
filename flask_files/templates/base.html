@@ -39,7 +39,6 @@
             color: black;
         }
         .base_image{
-            margin-top: 3%;
             background-position-x: center;
             background-repeat: no-repeat;
             background-image: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/base_image.jpeg?raw=true");
@@ -52,12 +51,61 @@
             text-align: center;
             padding-top: 15%;
        }
+       
+       .import_search {
+        left: 71%;
+  width: 100%;
+  position: relative;
+}
+
+.searchTerm {
+    font-family: 'SANJUGotgam';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANJUGotgam.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+  width: 45%;
+  border: 3px solid lightcoral;
+  border-right: none;
+  padding: 15px;
+  height: 5px;
+  border-radius: 70px 0px 0px 70px;
+  outline: none;
+  color: lightcoral;
+}
+
+.searchTerm:focus{
+  color: lightcoral;
+}
+
+.search_btn {
+    width: 30%;
+    height: 100%;
+    border: lightcoral;
+    background: lightcoral;
+  text-align: center;
+  color: #fff;
+  border-radius: 0px 70px 70px 0px;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    margin-top:5%;
+    width: 40%;
+    position: relative;
+    text-align-last: center;
+    left: 15%;
+  transform: translate(-50%, -50%);
+}
     </style>
 </head>
 <body>
     <header>
        <a href="http://20.84.55.133:5000/"><h1>얼마<span>약</span></h1></a>
         <nav>
+        <hr>
             <ul>
                 <a href="http://20.84.55.133:5000/"><li>약 랭킹</li></a>
                 <a href="http://20.84.55.133:5000/pharmacy_map"><li>가까운 약국</li></a>
@@ -66,6 +114,18 @@
             </ul>
         </nav>
     </header>
+        <div class="wrap">
+            <div class="import_search">
+                <form class="search" method="POST" action="{{ url_for('search') }}">
+                <input type="text" class="searchTerm" name="druginput" placeholder="의약품 이름을 검색해주세요">
+               <button type="submit" class="search_btn">
+                 <i class="fa fa-search"></i>  
+              </button>
+            </form>
+            </div>
+         </div>
+
+
     <div class="base_image">
     <div class="content">
        약 조회수 랭킹
