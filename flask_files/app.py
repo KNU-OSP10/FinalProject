@@ -151,5 +151,9 @@ def search():
 def test():
     return render_template('testsearch.html')
 
+@app.route('/about_us')
+def aboutUs():
+    return render_template('aboutUs.html')
+
 if __name__=='__main__':
     app.run('0.0.0.0', port=5000, debug=True)
