@@ -36,7 +36,7 @@
             text-align : center;
             background-position-x: center;
             background-repeat: no-repeat;
-            background-image: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/base_image.jpeg?raw=true");
+            background-image: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/reportingBlock.jpg?raw=true");
             background-size: contain;
             height: 650px;
             width: auto;
@@ -45,11 +45,14 @@
             display : inline;
         }
         .nonDescription{
-            width: 300px;
+            width: 260px;
         }
         #description{
-            width: 300px;
+            width: 260px;
             height: 100px;
+        }
+        #submitButton{
+            width : 370px;
         }
         a { 
             text-decoration: none; 
@@ -73,7 +76,7 @@
     <hr>
 
 
-    <div id = "container"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id = "container"><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <form name="input" method="GET" action="/reporting" > <!-- 넣어주는 방식이니까, get 으로 넣어주기. post 아니다! -->
             
             약국명 <input type="text" class="nonDescription" id="pharmName" name="pharmName" readonly /required >
@@ -95,8 +98,10 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
-            <input type="submit" value="전송"> <!-- 제출 버튼 누르면 제출됨.-->
-            
+            <input type="image" alt="제출버튼" 
+            id="submitButton"src="https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/submitButton.jpg?raw=true" > <!-- 제출 버튼 누르면 제출됨.-->
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         </form><br><br><br><br>
     </div>    
     
