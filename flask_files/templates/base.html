@@ -36,12 +36,18 @@
             text-decoration: none; 
             color: black;
         }
+        .base_image{
+            margin-top: 3%;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-image: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/base_image.jpeg?raw=true");
+            background-size: contain;
+            height: 650px;
+            width: auto;
+        }
         .content{
-           text-align:center;
-           border:1px solid;
-           border-radius:10px;
-           margin:30px 100px;
-           line-height:2em;
+            text-align: center;
+            padding-top: 15%;
        }
     </style>
 </head>
@@ -58,9 +64,11 @@
         </nav>
     </header>
     <hr>
+    <div class="base_image">
     <div class="content">
         약 랭킹
        {% block content %} {% endblock %}
     </div>
+</div>
 </body>
 </html>
