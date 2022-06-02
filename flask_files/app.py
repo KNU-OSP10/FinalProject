@@ -134,6 +134,9 @@ def search():
 
     if request.method == "POST":
         keyword = request.form['druginput']
+        cur.execute("UPDATE pharmacy_schema.pills_list SET see=see+1 where itemname like '%{0}%'".format(keyword))
+        con.commit()
+        
         cur.execute("SELECT * FROM pharmacy_schema.pills_list where itemname like '%{0}%'".format(keyword))
         descript = cur.fetchall()
         con.commit()
