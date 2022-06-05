@@ -107,8 +107,6 @@ def findPharmacy():
         cur.close()
         con.close()
         return render_template('findPharm2.html', pharmacy = pharmacy)
-    else:
-        return render_template('findPharm.html')
 
 @app.route('/findDrugs', methods = ['GET', 'POST'])
 def findDrugs():
@@ -129,11 +127,12 @@ def findDrugs():
 #search창
 @app.route('/search', methods = ['POST'])
 def search():
-    con = connectDB()
-    cur = con.cursor()
 
     if request.method == "POST":
         keyword = request.form['druginput']
+        con = connectDB()
+        cur = con.cursor()
+
         cur.execute("UPDATE pharmacy_schema.pills_list SET see=see+1 where itemname like '%{0}%'".format(keyword))
         con.commit()
         
@@ -141,13 +140,14 @@ def search():
         descript = cur.fetchall()
         con.commit()
 
-        cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by 3 limit 5".format(keyword))
-        ranks = cur.fetchall()
-        con.commit()
-        cur.close()
-
-        con.close()
-        return render_template('search.html', descript=descript, ranks=ranks)
+        if len(descript) > 0:
+            cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by 3 limit 5".format(keyword))
+            ranks = cur.fetchall()
+            cur.close()
+            con.close()
+            return render_template('search.html', descript=descript, ranks=ranks)
+        else:
+            return render_template('search_else.html', keyword=keyword)
 
 #test search - 검색 기능 시험 용
 @app.route('/testsearch')
