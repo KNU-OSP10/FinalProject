@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>약이름 DB에 표시</title>
+    <title>약이름 검색</title>
     <style>
-        #afterClick{
-            display : none;
+        @font-face {
+            font-family: 'SANJUGotgam';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANJUGotgam.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body{
+            font-family : 'SANJUGotgam';
+            text-align : center;
         }
     </style>
 </head>
 <body>
+    <h2>약 검색</h2>
     <form name="input" method="POST" action="/findDrugs">
         <input type="text" id="drugName" name="drugName" /required>
         <input type="submit" value="검색">
