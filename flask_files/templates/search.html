@@ -28,10 +28,9 @@
             display: inline;
             margin:0 10px;
         }
-        
         header h1{
             font-size: 40px;
-            margin-top:1.5%;
+            margin-top: 1.5%;
         }
         
         .content {
@@ -69,6 +68,7 @@
         .descript__type {
             font-size: large;
             font-weight: 500;
+            padding-bottom: 10px;
         }
         
         .ranking {
@@ -80,24 +80,51 @@
 
         }
 
+        .ranking__index {
+            padding-right: 100px;
+        }v
+
+        .ranking__index__pharm {
+            padding-left: 50px;
+            padding-right: 10px;
+        }
+
+        .ranking__index__price, .ranking__index__updown {
+            padding-left: 40px;
+            padding-right: 20px;
+        }
+
         .ranking__rank {
             font-size: large;
             padding-bottom: 10px;
         }
+
+        .ranking__num, .ranking__pharmacy, .ranking__price {
+            padding-right: 30px;
+        }
+
+        .ranking__updown {
+            padding-left: 35px;
+        }
+
+        .medi__name{
+            display: flex;
+            padding-right: 370px;
+            padding-bottom: 40px;
+        }
+
         a { 
             text-decoration: none; 
             color: black;
         }
+
     </style>
 </head>
 <body>
     <header>
         <a href="http://20.84.55.133:5000/"><h1>얼마<span>약</span></h1></a>
-        <form class="search">
-            <input class="search_medi" type="text" name="search">
-            <button class="search_btn" type="submit" name="click" value=""></button>
-        </form>
         <nav>
+            <hr>
             <ul>
                 <a href="http://20.84.55.133:5000/"><li>약 랭킹</li></a>
                 <a href="http://20.84.55.133:5000/pharmacy_map"><li>가까운 약국</li></a>
@@ -108,6 +135,9 @@
     </header>
     
     <div class="content">
+        <div class="medi__name">
+            <h1>{{descript[0][1]}}</h1>
+        </div>
         <div class="content-title"><div class="point">약</div>설명</div>
         <div class="descript">
             <!--약 설명 추가 / 링크 연동 !-->
@@ -117,7 +147,6 @@
                     약 효과:
                 </div>
                 <div class="descript__detail">
-                    <!-- <p> 어떻게 지우지,,? !-->
                     {{descript[0][3]}}
                 </div>
             </div>
@@ -131,13 +160,17 @@
             </div>
         </div>
 
-        <div class="content-title"><div class="point">약</div>랭킹</div>
+        <div class="content-title"><div class="point">약</div>가격</div>
         <div class="ranking">
             <ol>
+                <h3 class="ranking__index">
+                    <span class="ranking__index__pharm">약국</span>
+                    <span class="ranking__index__price">가격</span>
+                    <span class="ranking__index__updown">평균차이</span>
+                </h3>
                 {% for ranks in ranks%}
                 <li>
                     <div class="ranking__rank">
-                        <!-- index 추가 어떻게 하는거여 -->
                         <span class="ranking__num"></span>
                         <span class="ranking__pharmacy">{{ranks[2]}}</span>
                         <span class="ranking__price">{{ranks[3]}}</span>
