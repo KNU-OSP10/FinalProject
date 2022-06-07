@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>약국 DB에 표시</title>
+    <title>약국 검색결과</title>
     <style>
         @font-face {
             font-family: 'SANJUGotgam';
@@ -13,21 +13,18 @@
             font-style: normal;
         }
         body{
-            font-family : 'SANJUGotgam'
+            font-family : 'SANJUGotgam';
+            text-align : center;
         }
+        </style>
     </style>
 </head>
 <body>
-    <h1></h1>
-    <form name="input" method="POST" action="http://20.84.55.133:5000/findPharmacy">
-        <input type="text" id="pharmName" name="pharmName" /required>
-        <input type="submit" value="검색">
-    </form>
-    <h1 id="afterClick">약국 DB에 표시</h1>
+    <h1 id="afterClick">약국 검색결과</h1>
     {% block content %}
         {% for pharmacy in pharmacy%}
             <div class='medi'>
-                <p id="pharmacy{{pharmacy[0]}}">이름 : {{pharmacy[4]}}  // 주소 : {{pharmacy[3]}} </p>
+                <p id="pharmacy{{pharmacy[0]}}">이름 : {{pharmacy[4]}}    |    주소 : {{pharmacy[3]}} </p>
             </div>
             <script>
                 document.getElementById("pharmacy{{pharmacy[0]}}").addEventListener("click", () =>{
@@ -37,6 +34,7 @@
             </script>
         {% endfor %}
     {% endblock %}
+    <br><br>
     <p>혹시 해당 약국이 없으신가요?</p>
     <input type="text" id="newName">
     <input type="submit" value="입력" id="newClick">
