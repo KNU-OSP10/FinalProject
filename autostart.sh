@@ -1,3 +1,4 @@
+set fileformat=unix
 #!/bin/bash
 
 git clone https://github.com/KNU-OSP10/FinalProject.git
