@@ -10,5 +10,6 @@ sudo apt-get install build-essential python3-dev libpq-dev
 sudo apt-get install python3-pip
 sudo apt-get install build-dep python-psycopg2
 pip3 install psycopg2
+python3 -m pip install flask
 pip install -r ./FinalProject/flask_files/requirements.txt
 python ./FinalProject/flask_files/app.py
