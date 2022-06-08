@@ -5,8 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <style>
+        @font-face {
+            font-family: 'SANJUGotgam';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANJUGotgam.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body{
+            font-family : 'SANJUGotgam';
+            height: 100%;
+            width: 100%;
+            background: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/pharmacy_background.jpeg?raw=true") no-repeat;
+            background-size: cover;
+        }
+        header h1{
+            font-size: 40px;
+            margin-top:1.5%;
+        }
+        header{
+            text-align: center;
+        }
+        header h1 span{
+            color:red;
+        }
+        header nav ul li {
+            display: inline;
+            margin:0 10px;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <a href="/"><h1>얼마<span>약</span></h1></a>
+        <nav>
+            <ul>
+                <a href="/"><li>약 랭킹</li></a>
+                <a href="/pharmacy_map"><li>가까운 약국</li></a>
+                <a href="/report"><li>약 제보</li></a>
+                <a href="/about_us"><li>About us</li></a>
+            </ul>
+        </nav>
+    </header>
+    <hr>
 </body>
 </html>
