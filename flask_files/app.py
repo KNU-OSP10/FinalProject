@@ -107,6 +107,8 @@ def findPharmacy():
         cur.close()
         con.close()
         return render_template('findPharm2.html', pharmacy = pharmacy)
+    else:
+        return render_template('findPharm.html')
 
 @app.route('/findDrugs', methods = ['GET', 'POST'])
 def findDrugs():
