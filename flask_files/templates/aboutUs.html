@@ -18,6 +18,7 @@
             width: 100%;
             background: url("https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/pharmacy_background.jpeg?raw=true") no-repeat;
             background-size: cover;
+            text-align : center;
         }
         header h1{
             font-size: 40px;
@@ -37,8 +38,19 @@
             text-decoration: none; 
             color: black;
         }
-        .contents{
+        .container{
+            display : inline-block;
+            width : 20%;
+            margin-bottom : 5%;
+        }
+        .images{
+            display : inline-block;
+            width : 50%;
+            object-fit : contain;
             text-align : center;
+        }
+        .contents{
+            display : inline-block;
         }
 
     </style>
@@ -58,14 +70,39 @@
     <hr>
     <br><br><br>
 
-    <h2 class="contents">우리는 오픈소스프로그래밍 10조, "도데체 얼마약?!" 입니다!</h2>
+    <h2 class="contents">우리는 오픈소스프로그래밍 10조</h2>
+    <h2 class="contents">"도대체 얼마약?!" 입니다!</h2>
     <br><br><br>
-    <h3 class="contents">2015116293 남동우</h3>
+    <div class = "container">
+        <img class = "images" src = "https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/aboutUsImage/dongwoo.png?raw=true"/>
+        <br>
+        <h3 class="contents">2015116293 남동우</h3>
+        <br>
+        <p class="contents"> 맡은 역할 : 제보 페이지 <br>구현</p>
+    </div>
     
-    <h3 class="contents">2019110366 김주경</h3>   
-        
-    <h3 class="contents">2019110450 민승환</h3> 
-
-    <h3 class="contents">2021113989 김아진</h3>    
+    <div class = "container">
+        <img class = "images" src = "https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/aboutUsImage/jugyung.png?raw=true"/>
+        <br>
+        <h3 class="contents">2019110366 김주경</h3>
+        <br>
+        <p class="contents"> 맡은 역할 : 약 조회수 랭킹<br> 페이지 구현</p>
+    </div>
+    <br>
+    <div class = "container">
+        <img class = "images" src = "https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/aboutUsImage/seunghwan.png?raw=true"/>
+        <br>
+        <h3 class="contents">2019110450 민승환</h3>     
+        <br>
+        <p class="contents"> 맡은 역할 : 가까운 약국 <br>페이지 구현(Map API)</p>
+    </div>
+    
+    <div class = "container">
+        <img class = "images" src = "https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/aboutUsImage/ajin.png?raw=true"/>
+        <br>
+        <h3 class="contents">2021113989 김아진</h3>  
+        <br>
+        <p class="contents"> 맡은 역할 : 검색 페이지, <br> 검색결과 구현</p>  
+    </div>    
 </body>
 </html>
