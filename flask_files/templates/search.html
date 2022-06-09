@@ -111,7 +111,7 @@
         .medi__name{
             display: flex;
             padding-right: 370px;
-            padding-bottom: 40px;
+            padding-bottom: 20px;
             background-image : url(https://github.com/KNU-OSP10/FinalProject/blob/main/flask_files/templates/mediBox.jpg?raw=true);
             background-size : contain;
         }
@@ -119,6 +119,11 @@
         a { 
             text-decoration: none; 
             color: black;
+        }
+
+        #medTitle{
+            padding-top : 40px;
+            padding-left : 35px;
         }
 
     </style>
@@ -139,7 +144,7 @@
     
     <div class="content">
         <div class="medi__name">
-            <h1>{{descript[0][1]}}</h1>
+            <h1 id = "medTitle">{{descript[0][1]}}</h1>
         </div>
         <div class="content-title"><div class="point">약</div>설명</div>
         <div class="descript">
