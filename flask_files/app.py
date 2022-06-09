@@ -141,7 +141,7 @@ def search():
         con.commit()
 
         if len(descript) > 0:
-            cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by 3 limit 5".format(keyword))
+            cur.execute("SELECT * FROM pharmacy_schema.drug_ranking22 where drug like '%{0}%' order by price limit 5".format(keyword))
             ranks = cur.fetchall()
             cur.close()
             con.close()
