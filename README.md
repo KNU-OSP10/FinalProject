@@ -2,7 +2,7 @@
 
 기말 프로젝트 "얼마약" 페이지입니다!
 <br><br>
-AWS 웹 호스팅 주소 : http://3.39.196.124/ 
+AWS 웹 호스팅 주소 : http://3.39.196.124/ <br>
 도메인 주소 : http://compare-pharmacy.ga/
 
 git clone 이후, autostart.sh 파일을 실행해주시면, 로컬 IP:5000(포트 : 5000)으로 웹 페이지 접속이 가능합니다!
